@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Todolist</title>
+</head>
+<body>
+	<h1>Todolist Django</h1>
+	<form action="" method="post">
+		{% csrf_token %}
+		<div>
+			<input type="text" name="todo" placeholder="Enter your new todo">
+			<button type="submit">Add</button>
+		</div>
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>Todo</th>					
+					</tr>
+				</thead>
+				<tbody>
+					{% for ctx in context%}
+					<tr>
+						<td>{{ctx.text}}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</form>		
+</body>
+</html>															
