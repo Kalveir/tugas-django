@@ -16,4 +16,16 @@ def add(request):
 
 	return HttpResponseRedirect(reverse('todo-index'))
 
+def update(request, todo_id):
+	todo = Todo.objects.get(id=todo_id)
+	todo.status = not todo.status
+	todo.save()
+
+	return HttpResponseRedirect(reverse('todo-index'))
+
+def delete(request, todo_id):
+    if request.method == 'POST':
+        todo_item = Todo.objects.get(id=todo_id)
+        todo_item.delete()
+    return HttpResponseRedirect(reverse('todo-index'))
 # Create your views here.
